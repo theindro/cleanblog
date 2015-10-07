@@ -1,4 +1,4 @@
-<?
+<?php
 
 //connect database
 $db = mysqli_connect('127.0.0.1', 'root', '', 'cleanblog') or die(mysqli_error($db));
@@ -9,7 +9,7 @@ $q = mysqli_query($db, "SELECT * FROM posts NATURAL JOIN authors");
 while ($row = mysqli_fetch_assoc($q)) {
     $posts[] = $row;
 }
-var_dump($posts);
+
 ?>
 
 <!DOCTYPE html>
@@ -109,21 +109,21 @@ var_dump($posts);
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-            <? foreach ($posts as $post): ?>
+            <?php foreach ($posts as $post): ?>
 
                 <div class="post-preview">
                     <a href="post.html">
-                        <h2 class="post-title"><?=$post['post_title']?> </h2>
-                        <h3 class="post-subtitle"><?=$post['post_description']?></h3>
+                        <h2 class="post-title"><?php echo $post['post_title']?> </h2>
+                        <h3 class="post-subtitle"><?php echo $post['post_description']?></h3>
                     </a>
 
-                    <p class="post-meta">Posted by <a href="#"><?=$post['author_name']?></a> on <?=$post['post_created']?></p>
+                    <p class="post-meta">Posted by <a href="#"><?php echo $post['author_name']?></a> on <? echo $post['post_created']?></p>
 
                 </div>
 
                 <hr>
 
-            <? endforeach ?>
+            <?php endforeach ?>
 
             <!-- Pager -->
             <ul class="pager">
