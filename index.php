@@ -76,7 +76,7 @@ while ($row = mysqli_fetch_assoc($q)) {
                     <a href="about.html">About</a>
                 </li>
                 <li>
-                    <a href="post.html">Sample Post</a>
+                    <a href="post.php">Sample Post</a>
                 </li>
                 <li>
                     <a href="contact.html">Contact</a>
@@ -112,7 +112,7 @@ while ($row = mysqli_fetch_assoc($q)) {
             <?php foreach ($posts as $post): ?>
 
                 <div class="post-preview">
-                    <a href="post.html">
+                    <a href="post.php">
                         <h2 class="post-title"><?php echo $post['post_title']?> </h2>
                         <h3 class="post-subtitle"><?php echo $post['post_description']?></h3>
                     </a>
