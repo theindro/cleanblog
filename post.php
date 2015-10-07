@@ -1,6 +1,9 @@
 <?php
 
-$post_id = 2;
+$post_id = isset($_GET['id']) ? ($_GET['id']) : -1;
+
+//show error
+
 
 //connect database
 $db = mysqli_connect('127.0.0.1', 'root', '', 'cleanblog') or die(mysqli_error($db));
