@@ -1,21 +1,3 @@
-<?php
-
-$post_id = isset($_GET['id']) ? ($_GET['id']) : -1;
-
-//show error
-
-
-//connect database
-$db = mysqli_connect('127.0.0.1', 'root', '', 'cleanblog') or die(mysqli_error($db));
-mysqli_query($db, "SET NAMES 'utf8'");
-
-// retrieve data from database
-$q = mysqli_query($db, "SELECT *, DATE_FORMAT(post_created, ' %d,%m,%Y %H:%i' ) post_created FROM posts NATURAL JOIN authors");
-$post = mysqli_fetch_assoc($q);
-
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,16 +55,16 @@ $post = mysqli_fetch_assoc($q);
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="index.php">Home</a>
+                    <a href="?">Home</a>
                 </li>
                 <li>
-                    <a href="about.html">About</a>
+                    <a href="?page=about">About</a>
                 </li>
                 <li>
-                    <a href="post.php">Sample Post</a>
+                    <a href="?page=sample">Sample Post</a>
                 </li>
                 <li>
-                    <a href="contact.html">Contact</a>
+                    <a href="?page=contact">Contact</a>
                 </li>
             </ul>
         </div>
@@ -91,33 +73,7 @@ $post = mysqli_fetch_assoc($q);
     <!-- /.container -->
 </nav>
 
-<!-- Page Header -->
-<!-- Set your background image for this header on the line below. -->
-<header class="intro-header" style="background-image: url('img/post-bg.jpg')">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <h1 class="post-title"><?php echo $post['post_title']?> </h1>
-
-                    <h2 class="subheading"><?php echo $post['post_description']?></h2>
-                    <span class="meta">Posted by <a href="#"><?php echo $post['author_name']?></a><?php echo $post['post_created']?></span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-
-<!-- Post Content -->
-<article>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1"><?php echo $post['post_text']?></div>
-        </div>
-    </div>
-</article>
-
-<hr>
+<?php require "pages/$page.php"; ?>
 
 <!-- Footer -->
 <footer>
