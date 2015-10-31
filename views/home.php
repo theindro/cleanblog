@@ -1,14 +1,4 @@
-<?php
 
-
-
-// retrieve data from database
-$q = mysqli_query($db, "SELECT * FROM posts NATURAL JOIN authors");
-while ($row = mysqli_fetch_assoc($q)) {
-    $posts[] = $row;
-}
-
-?>
 
 <!-- Page Header -->
 <!-- Set your background image for this header on the line below. -->
@@ -40,7 +30,7 @@ while ($row = mysqli_fetch_assoc($q)) {
                         <h3 class="post-subtitle"><?php echo $post['post_description']?></h3>
                     </a>
 
-                    <p class="post-meta">Posted by <a href="#"><?php echo $post['author_name']?></a> on <? echo $post['post_created']?></p>
+                    <p class="post-meta">Posted by <a href="#"><?php echo $post['author_name']?></a> on <?php echo $post['post_created']?></p>
 
                 </div>
 
